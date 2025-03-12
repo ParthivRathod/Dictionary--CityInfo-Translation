@@ -13,13 +13,13 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #E8F9FF;
+  background-color: #e1eaed;
 }
 
  /* navbar  */
 
 .navbar {
-  background-color: #333;
+  background-color: #000000;
   padding: 17px;
 }
 
@@ -48,7 +48,70 @@ body {
 
 
   /* main style  */
+   
+  .heading{
+    text-align: center;
+    margin-top: 20px;
+  }
+  .input-conatiner{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .input-element{
+     margin: 10px;
+  }
+  .input-conatiner input{
+    outline: none;
+    border: 2px solid black;
+    border-radius: 16px;
+    padding: 11px;
+  }
 
+  .input-conatiner button{
+    background: #2147fb;
+    border: 2px double rgb(0, 0, 0);
+    border-radius: 13px;
+    width: 88px;
+    color: white;
+    cursor: pointer;
+    
+  }
+   
+.city-image{
+    display: block;
+    width: 585px;
+    margin: 25px auto;
+    border: 2px solid black;
+}
+.city-name{
+    font-size: 40px;
+    text-align: center;
+}
+.city-state{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 23px;
+    color: gray;
+}
+
+.city-infomation{
+    margin-top: 9px;
+    text-align: center;
+    font-size: 18px;
+
+}
+ 
+@media screen and (max-width: 604px) {
+    .city-image{
+        width: 473px;
+    }
+}
+@media screen and (max-width: 487px) {
+    .city-image{
+        width: 300px;
+    }
+}
 
   </style>
 
@@ -63,14 +126,60 @@ body {
     </nav>
   </header>
 
+   <h1 class="heading">Enter City District Name For Maharashtra</h1>
+    <div class="input-conatiner">
+   <input type="text" id="city" placeholder="Enter city name"  class="input-element" />
+   <button onclick="getCityInfo()" class="input-element">Get Info</button>
+</div>
+   <div id="city-info">
 
-
-
-
-
-
+   </div>
   
 <script>
+    const cityInfo = {
+        pune : {
+           name : "Pune",
+           state : "Maharashtra",
+           info : "Pune is a sprawling city in the western Indian state of Maharashtra. It was once the base of the Peshwas (prime ministers) of the Maratha Empire, which lasted from 1674 to 1818. It's known for the grand Aga Khan Palace, built in 1892 and now a memorial to Mahatma Gandhi, whose ashes are preserved in the garden. The 8th-century Pataleshwar Cave Temple is dedicated to the Hindu god Shiva. ",
+           image : "https://mittalbuilders.com/wp-content/uploads/2020/12/Reasons-to-settle-down-in-Pune-1400x700.png"
+        },
+        mumbai : {
+        name : "Mumbai",
+        state : "Maharashtra",
+        info : "Mumbai, formerly known as Bombay, is the capital city of the Indian state of Maharashtra. It is the financial, commercial, and entertainment capital of India. Known for its iconic landmarks like the Gateway of India, the Chhatrapati Shivaji Maharaj Terminus, and its long, bustling beaches. Mumbai is also home to Bollywood, the world's largest film industry.",
+        image : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Mumbai_Collage_2017.jpg/1200px-Mumbai_Collage_2017.jpg"
+    },
+
+    
+    
+    
+    
+    
+    }
+    
+    function getCityInfo(){
+          const cityName = document.getElementById("city").value.toLowerCase();
+          
+          const cityDetails = cityInfo[cityName];
+
+          if(!cityDetails){
+            alert("City Not Found");
+            return; 
+          }
+
+     
+          const cityInfoDiv = document.getElementById("city-info");
+            
+          cityInfoDiv.innerHTML =`
+            <img src="${cityDetails.image}" alt="${cityDetails.name}" class="city-image">
+            <h1 class="city-name">${cityDetails.name} </h2>
+            <p class="city-state">State:${cityDetails.state}</p>
+            <p class="city-infomation">${cityDetails.info}</p>
+          `;
+
+
+    }
+
 
 </script>
 
