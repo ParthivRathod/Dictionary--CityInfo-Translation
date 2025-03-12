@@ -1,67 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Translation</title>
-  <style>
-    * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #E8F9FF;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e1eaed;
+        }
 
- /* navbar  */
+        /* navbar  */
 
-.navbar {
-  background-color: #333;
-  padding: 17px;
-}
+        .navbar {
+            background-color: #333;
+            padding: 17px;
+        }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  /* justify-content: center; */
-}
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            /* justify-content: center; */
+        }
 
-.navbar ul li {
-  margin: 0 15px;
-}
+        .navbar ul li {
+            margin: 0 15px;
+        }
 
-.navbar ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 24px;
-  transition: color 0.3s;
-  margin: 14px;
-  padding: 0px;
-}
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            transition: color 0.3s;
+            margin: 14px;
+            padding: 0px;
+        }
 
-.navbar ul li a:hover {
-  color: #f39c12;
-}
-
-
-  /* main style  */
+        .navbar ul li a:hover {
+            color: #2147fb;
+        }
 
 
-  </style>
+        /* main style  */
+        .heading{
+    text-align: center;
+    margin-top: 20px;
+  }
+  .input-conatiner{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .input-element{
+     margin: 10px;
+  }
+  .input-conatiner input{
+    outline: none;
+    border: 2px solid black;
+    border-radius: 16px;
+    padding: 11px;
+    width: 278px;
+  }
+
+  .input-conatiner button{
+    background: #2147fb;
+    border: 2px double rgb(0, 0, 0);
+    border-radius: 13px;
+    width: 88px;
+    color: white;
+    cursor: pointer;
+    
+  }
+  .word-translator{
+    text-align: center;
+    font-size: 28px;
+    margin-top: 37px;
+  }
+    </style>
 
 </head>
+
 <body>
-  <header>
-    <nav class="navbar">
-      <ul>
-          <li><a href="/index.html">CityInfo</a></li>
-        <li><a href="/index2.html"><b>Translation</b></a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/index.html">CityInfo</a></li>
+                <li><a href="/index2.html"><b>Translation</b></a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <h1 class="heading">Enter Word That You Want To Translate</h1>
+    <div class="input-conatiner">
+        <input type="text" id="word" placeholder="Enter word" class="input-element" />
+        <button onclick="getword()" class="input-element">Get Info</button>
+    </div>
+   
+    <div id="output-container" class="word-translator">
+        Here you see the translation...
+    </div>
 
 
 
@@ -70,10 +115,187 @@ body {
 
 
 
-<script>
+    <script>
 
-</script>
+        const wordtranslator = {
+
+            "good morning": "शुभ सकाळ",
+            "good night": "शुभ रात्री",
+            "hello": "नमस्कार",
+            "hi": "हाय",
+            "how are you?": "तुम्ही कसे आहात?",
+            "i am fine": "मी ठीक आहे",
+            "what is your name?": "तुमचे नाव काय आहे?",
+            "my name is": "माझे नाव आहे",
+            "thank you": "धन्यवाद",
+            "welcome": "स्वागत आहे",
+            "sorry": "माफ करा",
+            "please": "कृपया",
+            "excuse me": "माफ करा",
+            "yes": "होय",
+            "no": "नाही",
+            "goodbye": "नमस्कार",
+
+
+            "friend": "मित्र",
+            "love": "प्रेम",
+            "happy": "आनंदी",
+            "beautiful": "सुंदर",
+            "smart": "हुशार",
+            "strong": "बलवान",
+            "kind": "दयाळू",
+            "brave": "शूर",
+            "sweet": "गोड",
+            "angry": "रागावलेला",
+            "hungry": "भुकेला",
+            "thirsty": "तहानलेला",
+            "sleepy": "झोपाळू",
+            "tired": "थकलो",
+
+
+            "father": "वडील",
+            "mother": "आई",
+            "brother": "भाऊ",
+            "sister": "बहीण",
+            "grandfather": "आजोबा",
+            "grandmother": "आजी",
+            "son": "मुलगा",
+            "daughter": "मुलगी",
+            "husband": "नवरा",
+            "wife": "बायको",
+            "child": "मुलगा / मुलगी",
+
+
+            "sun": "सूर्य",
+            "moon": "चंद्र",
+            "star": "तारा",
+            "water": "पाणी",
+            "fire": "आग",
+            "earth": "पृथ्वी",
+            "tree": "झाड",
+            "flower": "फूल",
+            "rain": "पाऊस",
+            "wind": "वारा",
+            "river": "नदी",
+            "mountain": "डोंगर",
+            "sky": "आकाश",
+
+
+            "food": "अन्न",
+            "rice": "भात",
+            "bread": "पाव",
+            "milk": "दूध",
+            "tea": "चहा",
+            "coffee": "कॉफी",
+            "sugar": "साखर",
+            "salt": "मीठ",
+            "spicy": "तिखट",
+            "sweet": "गोड",
+            "hot": "गरम",
+            "cold": "थंड",
+
+
+            "home": "घर",
+            "school": "शाळा",
+            "college": "महाविद्यालय",
+            "teacher": "शिक्षक",
+            "student": "विद्यार्थी",
+            "hospital": "रुग्णालय",
+            "police station": "पोलीस ठाणे",
+            "market": "बाजार",
+            "restaurant": "हॉटेल",
+            "bus stop": "बस थांबा",
+            "train station": "रेल्वे स्टेशन",
+            "airport": "विमानतळ",
+            "road": "रस्ता",
+            "bridge": "पूल",
+            "city": "शहर",
+            "village": "गाव",
+            "temple": "मंदिर",
+            "church": "चर्च",
+            "mosque": "मशिद",
+
+
+            "one": "एक",
+            "two": "दोन",
+            "three": "तीन",
+            "four": "चार",
+            "five": "पाच",
+            "six": "सहा",
+            "seven": "सात",
+            "eight": "आठ",
+            "nine": "नऊ",
+            "ten": "दहा",
+            "hundred": "शंभर",
+            "thousand": "हजार",
+
+
+            "monday": "सोमवार",
+            "tuesday": "मंगळवार",
+            "wednesday": "बुधवार",
+            "thursday": "गुरुवार",
+            "friday": "शुक्रवार",
+            "saturday": "शनिवार",
+            "sunday": "रविवार",
+
+
+            "red": "लाल",
+            "blue": "निळा",
+            "green": "हिरवा",
+            "yellow": "पिवळा",
+            "white": "पांढरा",
+            "black": "काळा",
+            "pink": "गुलाबी",
+            "orange": "नारिंगी",
+            "purple": "जांभळा",
+            "brown": "तपकिरी",
+
+
+            "head": "डोके",
+            "eye": "डोळा",
+            "ear": "कान",
+            "nose": "नाक",
+            "mouth": "तोंड",
+            "hand": "हात",
+            "leg": "पाय",
+            "stomach": "पोट",
+            "heart": "हृदय",
+            "skin": "त्वचा",
+
+
+            "run": "पळणे",
+            "walk": "चालणे",
+            "sit": "बसणे",
+            "stand": "उभे राहणे",
+            "eat": "खाणे",
+            "drink": "पिणे",
+            "read": "वाचणे",
+            "write": "लिहिणे",
+            "speak": "बोलणे",
+            "listen": "ऐकणे",
+            "sleep": "झोपणे",
+            "wake up": "उठणे"
+        }
+
+       function getword(){
+          const wordInput = document.getElementById("word").value.toLowerCase();
+
+          const wordDetails = wordtranslator[wordInput];
+
+          if(!wordDetails){
+            alert("Word Not Found");
+            return; 
+          }
+
+          const outputElement = document.getElementById("output-container");
+           
+          outputElement.innerHTML =  `<h1 class="word-translator">${wordDetails} </h1>`;
+          
+       }
+
+    </script>
 
 
 </body>
+
 </html>
